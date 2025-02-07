@@ -17,7 +17,7 @@ const InstallPWA = () => {
       setShowSnackbar(true);
 
       // Hide snackbar after 5 seconds if the user doesn't interact
-      setTimeout(() => setShowSnackbar(false), 5000);
+      // setTimeout(() => setShowSnackbar(false), 5000);
     };
 
     window.addEventListener("beforeinstallprompt", handler);
