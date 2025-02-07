@@ -8,25 +8,25 @@ self.addEventListener('install', event => {
         return cache.addAll([
           '/',
           '/index.html',
-          '/icons/logo192.png',
-          '/icons/logo512.png'
+          '/logo192.png',
+          '/logo512.png',
+          '/logo1024.png' // Added logo1024.png
         ]);
       })
     );
     self.skipWaiting();
-  });
-  
-  self.addEventListener('activate', event => {
+});
+
+self.addEventListener('activate', event => {
     console.log('[Service Worker] Activating Service Worker...');
     event.waitUntil(self.clients.claim());
-  });
-  
-  self.addEventListener('fetch', event => {
+});
+
+self.addEventListener('fetch', event => {
     console.log('[Service Worker] Fetching:', event.request.url);
     event.respondWith(
       fetch(event.request).catch(() => {
         return caches.match(event.request);
       })
     );
-  });
-  
+});
