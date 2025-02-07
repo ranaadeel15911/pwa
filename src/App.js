@@ -21,7 +21,7 @@ console.log(location)
     {/* <h1>Welcome to My PWA</h1>
     <p>Enjoy a fast, offline experience.</p> */}
     <p>
-Here is Your Country Code <h1>location</h1>
+Here is Your Country Code <h1>{location.country}</h1>
     </p>
     {/* <InstallPWA /> */}
     {/* <BahrainButton /> */}
