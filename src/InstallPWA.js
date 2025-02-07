@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 
 const InstallPWA = () => {
+  const [showAlert, setShowAlert] = useState(false);
+  
   const [deferredPrompt, setDeferredPrompt] = useState(null);
-  const [showSnackbar, setShowSnackbar] = useState(false);
-
   useEffect(() => {
     // Check if the app is already installed
     if (window.matchMedia("(display-mode: standalone)").matches) {
-      setShowSnackbar(false);
+      setShowAlert(false);
       return;
     }
 
     const handler = (event) => {
       event.preventDefault();
       setDeferredPrompt(event);
-      setShowSnackbar(true);
+      setShowAlert(true);
 
       // Hide snackbar after 5 seconds if the user doesn't interact
-      // setTimeout(() => setShowSnackbar(false), 5000);
+      // setTimeout(() => setShowAlert(false), 5000);
     };
 
     window.addEventListener("beforeinstallprompt", handler);
@@ -34,14 +34,14 @@ const InstallPWA = () => {
           console.log("User dismissed the PWA install");
         }
         setDeferredPrompt(null);
-        setShowSnackbar(false);
+        setShowAlert(false);
       });
     }
   };
 
   return (
     <>
-      {showSnackbar && (
+      {showAlert && (
         <div
           style={{
             position: "fixed",
